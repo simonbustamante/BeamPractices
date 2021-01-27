@@ -11,9 +11,6 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 
-//the AWS credentials are set on Run As -> Run Configurations
-//--AWSAccessKey=AKIAYVCXR6BU5UEFTQG5 --AWSSecretKey=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 --awsRegion=us-east-2
-
 public class S3Example {
 
 	public static void main(String[] args) {
@@ -25,7 +22,7 @@ public class S3Example {
 		
 		myOption.setAwsCredentialsProvider(new AWSStaticCredentialsProvider(awsCredObject));
 		
-		PCollection<String> pInput=p.apply(TextIO.read().from("s3://govsol-bucket/beam/user_order.csv"));
+		PCollection<String> pInput=p.apply(TextIO.read().from("s3://"));
 		
 		pInput.apply(ParDo.of(new DoFn<String, Void>() {
 			
